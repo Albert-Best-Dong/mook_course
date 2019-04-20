@@ -12,7 +12,7 @@ import java.io.IOException;
 *   @date 2019/4/20
 *   
 */
-@WebServlet(name = "GetCourseServlet")
+@WebServlet("/GetCourseServlet")
 public class GetCourseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

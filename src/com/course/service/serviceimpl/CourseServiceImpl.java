@@ -9,17 +9,29 @@ import javax.servlet.http.HttpServletResponse;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 /**
-*   课程Service实现类
-*   @author albert
-*   @date 2019/4/20
-*
-*/
+ * 课程Service实现类
+ *
+ * @author albert
+ * @date 2019/4/20
+ */
 public class CourseServiceImpl implements CourseService {
     private CourseDao cd = new CourseDaoImpl();     //CourseDao对象，用于调用方法的返回值
+
+
+    public CourseServiceImpl() {
+    }
+
+    public CourseServiceImpl(CourseDao cd) {
+        this.cd = cd;
+    }
+
     @Override
+    //用户登录
     public int login(String username, String password) {
-        return 0;
+
+        return cd.login(username, password);
     }
 
     @Override

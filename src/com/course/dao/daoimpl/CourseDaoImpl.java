@@ -15,8 +15,8 @@ public class CourseDaoImpl implements CourseDao {
     static {
         Map<String,Object> imooc =new HashMap<String,Object>();
         imooc.put("username","imooc");
-        imooc.put("password", "immoc");
-        imooc.put("type", "超级管理员");
+        imooc.put("password", "imooc");
+        imooc.put("userType", "超级管理员");
         userTable.add(imooc);
     }
     public static List<Map<String, Object>> getUserTable() {
@@ -29,7 +29,19 @@ public class CourseDaoImpl implements CourseDao {
 
     @Override
     public int login(String username, String password) {
-        return 0;
+        int flag = 0;
+        for(Map<String,Object> userMap : CourseDaoImpl.getUserTable()){
+            if (userMap.get("username").equals(username)){
+                if(userMap.get("password").equals(password)){
+                    if(userMap.get("userType").equals("超级管理员")){
+                        flag = 1;
+                    }else{
+                        flag = 2;
+                    }
+                }
+            }
+        }
+        return flag;
     }
 
     @Override

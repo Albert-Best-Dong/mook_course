@@ -13,7 +13,7 @@ import java.io.IOException;
 *   @param  
 *   @return 
 */
-@WebServlet(name = "exportcourse")
+@WebServlet("/exportcourse")
 public class ExportCourseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 

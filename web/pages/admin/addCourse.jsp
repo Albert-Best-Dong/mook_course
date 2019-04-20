@@ -1,9 +1,9 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; UTF-8" %>
-<%@include file="include/common.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="<%=basePath%>">
+    <base href="${basePath}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>课程添加</title>
 </head>
@@ -11,7 +11,7 @@
 <center>
     <h1>课程添加</h1>
     <hr>
-    <form action="<%=basePath%>/AddCourseServlet" method="post" onsubmit="return validateCode()">
+    <form action="${basePath}/addcourse" method="post" onsubmit="return validateCode()">
         <table width="400px" cellspacing="0px" cellpadding="0px" border="1px">
             <tr>
                 <td>课程ID</td>
@@ -46,7 +46,7 @@
             <tr>
                 <td>操作人</td>
                 <td>
-                    <input name="operator" type="text" value=" readonly=" readonly">
+                    <input name="operator" type="text" value=" " readonly=" readonly">
                 </td>
             </tr>
             <tr>

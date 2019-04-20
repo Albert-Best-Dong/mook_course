@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="<%=basePath%>">
+    <base href="${basePath}">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>课程批量导入</title>
 </head>
@@ -11,7 +11,7 @@
 <center>
     <h1>课程批量导入</h1>
     <hr>
-    <form action="<%=basePath%>/CourseImportServlet" method="post" enctype="multipart/form-data">
+    <form action="${basePath}/CourseImportServlet" method="post" enctype="multipart/form-data">
         <table cellspacing="0px" cellpadding="0px" border="1px" width="400px">
             <tr>
                 <td>Excel文件</td>

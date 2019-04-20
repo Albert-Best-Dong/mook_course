@@ -1,9 +1,9 @@
 <%@page language="java" pageEncoding="UTF-8" contentType="text/html; UTF-8" %>
-<%@include file="include/common.jsp"%>
+
 <!DOCTYPE html>
 <html>
 <head>
-    <base href="<%=basePath%>">
+    <base href="/mook_course">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>登录页面</title>
     <style type="text/css">
@@ -19,7 +19,7 @@
             font-weight: bolder;
             float: left;
             cursor: pointer;
-            width: 40x;
+            width: 40px;
             height: 20px;
             line-height: 20px;
             text-align: center;
@@ -38,11 +38,12 @@
     </style>
 
 </head>
-<body
-">
+<body>
 <center>
+
     <h1>用户登录</h1>
-    <form action="<%=basePath%>/LoginServlet" method="post" onsubmit="return validateCode()">
+
+    <form action="mook_course/login" method="post" onsubmit="return validateCode()">
         <table width="300px" cellspacing="0px" cellpadding="0px" border="1px">
             <tr>
                 <td>用户名</td>
