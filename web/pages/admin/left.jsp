@@ -24,8 +24,8 @@
 			<div class="c1">
 				<h3 onclick="show1()">用户管理</h3>
 				<div class="c2" id="menu1" style="display:none;">
-					<p><a href="${basePath}/pages/admin/addUser.jsp" target="main">添加管理员</a></p>
-					<p><a href="${basePath}/selectuser" target="main">查询管理员</a></p>
+					<p><a href="/mook_course/pages/admin/addUser.jsp" target="main">添加管理员</a></p>
+					<p><a href="/mook_course/selectuser" target="main">查询管理员</a></p>
 				</div>
 			</div>
 		</c:when>
@@ -36,10 +36,10 @@
 	<div class="c1">
 		<h3 onclick="show2()">课程管理</h3>
 		<div class="c2" id="menu2" style="display:none;">
-			<p><a href="${basePath}/pages/admin/addCourse.jsp" target="main">课程添加</a></p>
-			<p><a href="${basePath}pages/admin/courseImport.jsp" target="main">课程批量导入(Excel)</a></p>
-			<p><a href="${basePath}/exportcourse" target="main">课程导出</a></p>
-			<p><a href="${basePath}GetCourseServlet" target="main">课程查询</a></p>
+			<p><a href="/mook_course/pages/admin/addCourse.jsp" target="main">课程添加</a></p>
+			<p><a href="/mook_course/pages/admin/courseImport.jsp" target="main">课程批量导入(Excel)</a></p>
+			<p><a href="/mook_course/exportcourse" target="main">课程导出</a></p>
+			<p><a href="/mook_course/GetCourseServlet" target="main">课程查询</a></p>
 		</div>
 	</div>
 	<script type="text/javascript">

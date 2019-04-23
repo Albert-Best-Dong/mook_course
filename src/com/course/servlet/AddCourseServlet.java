@@ -1,5 +1,11 @@
 package com.course.servlet;
 
+import com.course.dao.daoimpl.CourseDaoImpl;
+import com.course.domian.Course;
+import com.course.service.CourseService;
+import com.course.service.serviceimpl.CourseServiceImpl;
+import com.course.utils.CourseUtil;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -14,13 +20,15 @@ import java.io.IOException;
 *   @param  
 *   @return 
 */
-@WebServlet(name = "addcourse")
+@WebServlet("/addcourse")
 public class AddCourseServlet extends HttpServlet {
+    private CourseService cs = new CourseServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        CourseUtil.addCourse(request);
+        request.getRequestDispatcher("/showCourse.jsp").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        doPost(request,response);
     }
 }

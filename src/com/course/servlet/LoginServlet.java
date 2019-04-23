@@ -27,8 +27,12 @@ public class LoginServlet extends HttpServlet {
             //是否为超级管理员
             if(cs.login(username, password)== 1){
                 request.getSession().setAttribute("flag",1);
+            }else{
+                request.getSession().setAttribute("flag",0);
             }
             response.sendRedirect(request.getContextPath()+"/pages/admin/server.jsp");
+        }else{
+            request.getRequestDispatcher(request.getContextPath()).forward(request,response);
         }
 
     }
