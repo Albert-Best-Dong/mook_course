@@ -12,9 +12,8 @@ import org.apache.poi.ss.usermodel.WorkbookFactory;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 /**
 *   文本工具类： 文本工具类：
@@ -42,11 +41,11 @@ public class ExcelRead {
                 for (int i = 0; i <= rowNum ; i++) {
                     ArrayList<String> courseString =new ArrayList<String>();
                     Row row = sheet.getRow(i);
-                    courseString.add(String.valueOf(row.getCell(0).getNumericCellValue()));
+                    courseString.add(String.valueOf((int)row.getCell(0).getNumericCellValue()));
                     courseString.add(row.getCell(1).getStringCellValue());
                     courseString.add(row.getCell(2).getStringCellValue());
                     courseString.add(row.getCell(3).getStringCellValue());
-                    courseString.add(String.valueOf(row.getCell(4).getNumericCellValue()));
+                    courseString.add(String.valueOf((int)row.getCell(4).getNumericCellValue()));
                     courseString.add(row.getCell(5).getStringCellValue());
                     result.add(courseString);
                 }

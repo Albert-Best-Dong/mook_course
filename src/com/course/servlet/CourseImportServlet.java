@@ -20,7 +20,7 @@ public class CourseImportServlet extends HttpServlet {
         ArrayList<ArrayList<String>> courseList = ExcelRead.readFile(request);
         cs.importCourse(courseList);
         request.setAttribute("courses", CourseDaoImpl.getCourseTable());
-        request.getRequestDispatcher("/showCourse.jsp").forward(request,response);
+        request.getRequestDispatcher("/GetCourseServlet").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

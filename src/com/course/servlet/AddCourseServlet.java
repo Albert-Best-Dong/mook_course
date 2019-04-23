@@ -25,7 +25,7 @@ public class AddCourseServlet extends HttpServlet {
     private CourseService cs = new CourseServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         CourseUtil.addCourse(request);
-        request.getRequestDispatcher("/showCourse.jsp").forward(request,response);
+        request.getRequestDispatcher("/GetCourseServlet").forward(request,response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
