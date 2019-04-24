@@ -20,7 +20,11 @@ import java.io.IOException;
 public class ExportCourseServlet extends HttpServlet {
     CourseService cs = new CourseServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        cs.exportCourse(response);
+        try {
+            cs.exportCourse(response);
+        } catch (Exception e) {
+            response.getWriter().print("不存在");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -25,18 +25,23 @@ public final class ExcelHelper {
         } else {
             workbook = new HSSFWorkbook();
         }
-        Sheet sheet = workbook.createSheet("courses");
-        List<Course> courses = CourseDaoImpl.getCourseTable();
-        for (int i = 0; i < courses.size(); i++) {
-            Row row = sheet.createRow(i);
-            Course course = courses.get(i);
-            row.createCell(0).setCellValue(course.getCourseId());
-            row.createCell(1).setCellValue(course.getCourseName());
-            row.createCell(2).setCellValue(course.getCourseType());
-            row.createCell(3).setCellValue(course.getDescription());
-            row.createCell(4).setCellValue(course.getCourseTime());
-            row.createCell(5).setCellValue(course.getOperator());
 
+        if(CourseDaoImpl.getCourseTable().size() == 0){
+            workbook = null;
+        }else {
+            Sheet sheet = workbook.createSheet("courses");
+            List<Course> courses = CourseDaoImpl.getCourseTable();
+            for (int i = 0; i < courses.size(); i++) {
+                Row row = sheet.createRow(i);
+                Course course = courses.get(i);
+                row.createCell(0).setCellValue(course.getCourseId());
+                row.createCell(1).setCellValue(course.getCourseName());
+                row.createCell(2).setCellValue(course.getCourseType());
+                row.createCell(3).setCellValue(course.getDescription());
+                row.createCell(4).setCellValue(course.getCourseTime());
+                row.createCell(5).setCellValue(course.getOperator());
+
+            }
         }
         return workbook;
     }

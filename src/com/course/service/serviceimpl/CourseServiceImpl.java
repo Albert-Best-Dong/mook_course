@@ -44,7 +44,7 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void addUser(String username, String password) {
-        cd.addUser(username,password);
+        cd.addUser(username, password);
     }
 
     @Override
@@ -85,18 +85,20 @@ public class CourseServiceImpl implements CourseService {
     }
 
     @Override
-    public void exportCourse(HttpServletResponse response) {
+    public void exportCourse(HttpServletResponse response) throws Exception {
         //默认高版本excel
         Workbook workbook = ExcelHelper.export(true);
+        if (null == workbook) {
 
-        response.setHeader("Content-Disposition","attachment;filename=export.xlsx" );
-        try {
+            return;
+        } else {
+            response.setHeader("Content-Disposition", "attachment;filename=export.xlsx");
+
             ServletOutputStream servletOutputStream = response.getOutputStream();
             workbook.write(servletOutputStream);
             servletOutputStream.flush();
             servletOutputStream.close();
-        } catch (IOException e) {
-            e.printStackTrace();
         }
+
     }
 }

@@ -60,9 +60,7 @@
 
                 </td>
                 <td style="border-left-style:none;">
-                    <div class="code" id="checkCode">
-                    </div>
-                    <img src="http://localhost:8080/mook_course/kaptcha.jpg" id="changecode"/>
+                    <img src="http://localhost:8080/mook_course/kaptcha.jpg" id="checkCode"/>
 
                 </td>
             </tr>
@@ -78,26 +76,36 @@
 
 <script type="text/javascript">
     // alert(code);
-    $("#changecode").on("click",function(){
-        $(this).attr("src","http://localhost:8080/mook_course/kaptcha.jpg?d="+new Date().getTime());
+    $("#checkCode").on("click", function () {
+        $(this).attr("src", "http://localhost:8080/mook_course/kaptcha.jpg?d=" + new Date().getTime());
     });
     $("input[type='submit']").click(function () {
         var code = $("input[name='checkCode']").val();
         var username = $("input[name='username']").val();
-        var password =$("input[name='password']").val();
+        var password = $("input[name='password']").val();
         $.ajax({
-            "url":"mook_course/login",
-            "data":{"code":code,"username":username,"password":password},
-            "type":"post",
-            "dataType":"json",
-            "success":function (data) {
-                console.log(data);
-                window.location.replace("http://localhost:8080/mook_course/pages/admin/server.jsp");
+            "url": "mook_course/login",
+            "data": {"code": code, "username": username, "password": password},
+            "type": "post",
+            "dataType": "json",
+            "success": function (data) {
+                    if(data.success!=null){
+                        console.log(data);
+                        window.location.replace("http://localhost:8080/mook_course/pages/admin/server.jsp");
+                    }else if(data.fail!=null){
+                        alert("信息有误");
+                        window.location.replace("http://localhost:8080/mook_course/");
+                    }
+
+
             },
-            "error":function (err) {
-                alert("信息有误");
-                window.location.replace("http://localhost:8080/mook_course/");
-                console.log(err);
+            "error": function (err) {
+                    alert("信息有误");
+                    window.location.replace("http://localhost:8080/mook_course/");
+                    console.log(err);
+
+
+
             }
         });
     })

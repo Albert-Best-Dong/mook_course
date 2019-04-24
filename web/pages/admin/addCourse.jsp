@@ -7,6 +7,7 @@
     <base href="/mook_course">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>课程添加</title>
+    <script type="text/javascript" src="mook_course/resources/js/dataTable/jquery-3.3.1.js"></script>
 </head>
 <body>
 <center>
@@ -60,7 +61,29 @@
     </form>
 </center>
 <script type="text/javascript">
+<%--    判断字符是否为空--%>
+    function isEmpty(str) {
+        var flag = false;
+        if (str.length == 0 || str.match(/^\s*$/) || str == null) {
+            flag =  true;
+        }
+        return flag;
+    }
+</script>
+<script type="text/javascript">
 
+
+    function validateCode() {
+        var courseId = $("input[name='courseId']").val();
+        var courseName = $("input[name='courseName']").val();
+        var description = $("textarea[name='description']").val();
+        var courseTime = $("input[name='courseTime']").val();
+
+        if(isEmpty(courseId)||isEmpty(courseName)||isEmpty(description)||isEmpty(courseTime)){
+            alert("信息有误");
+            return false;
+        }
+    }
 </script>
 </body>
 </html>

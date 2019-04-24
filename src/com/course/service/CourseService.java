@@ -27,5 +27,5 @@ public interface CourseService {
 
     public void importCourse(ArrayList<ArrayList<String>> courseList);
 
-    public void exportCourse(HttpServletResponse response);
+    public void exportCourse(HttpServletResponse response) throws Exception;
 }

@@ -29,32 +29,37 @@ public class LoginServlet extends HttpServlet {
 
         String code = request.getParameter("code");
         String checkCode = (String) request.getSession().getAttribute("kcode");
-        System.out.println(code+"====="+checkCode);
         Map<String, String> result = new HashMap<>();
         PrintWriter out = response.getWriter();
-        //账号密码正确
-        if(cs.login(username, password)!= 0){
-            request.getSession().setAttribute("loginUser",username);
-            if(code!=null&checkCode!=null) {
-                //如果用户输入的验证码和产生在服务器端的验证码一致，那么就告诉用户输入正确
-                if (code.equalsIgnoreCase(checkCode)) {
-                    //登录逻辑、注册逻辑等相关的业务操作
-                    //是否为超级管理员
+        if(code!=null&checkCode!=null) {
+            //如果用户输入的验证码和产生在服务器端的验证码一致，那么就告诉用户输入正确
+            if (code.equalsIgnoreCase(checkCode)) {
+                //登录逻辑、注册逻辑等相关的业务操作
+                //账号密码正确
+                if(cs.login(username, password) == 0){
+                    //账号密码不对，登录失败
+                    result.put("fail", "失败");
+                    out.print(JSON.toJSONString(result));
+                }else{
+                    request.getSession().setAttribute("loginUser",username);
                     if(cs.login(username, password)== 1){
+                        //超级管理员
                         request.getSession().setAttribute("flag",1);
                     }else{
+                        //普通用户
                         request.getSession().setAttribute("flag",0);
                     }
                     result.put("success", "成功");
                     out.print(JSON.toJSONString(result));
-                } else {
-                    result.put("fail", "失败");
-                    out.print(JSON.toJSONString(result));
                 }
-            }
 
-//            response.sendRedirect(request.getContextPath()+"/pages/admin/server.jsp");
+            } else {
+                result.put("fail", "失败");
+                out.print(JSON.toJSONString(result));
+            }
         }
+        out.flush();
+        out.close();
 
     }
 
