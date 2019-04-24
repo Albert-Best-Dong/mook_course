@@ -8,7 +8,7 @@
     <title>登录页面</title>
     <style type="text/css">
         .code {
-            background: url(code_bg.jpg);
+            /*background: url(code_bg.jpg);*/
             font-family: Arial;
             font-style: italic;
             color: blue;
@@ -36,14 +36,14 @@
             text-decoration: underline;
         }
     </style>
-
+    <script type="text/javascript" src="mook_course/resources/js/dataTable/jquery-3.3.1.js"></script>
 </head>
 <body>
 <center>
 
     <h1>用户登录</h1>
 
-    <form action="mook_course/login" method="post" onsubmit="return validateCode()">
+    <div>
         <table width="300px" cellspacing="0px" cellpadding="0px" border="1px">
             <tr>
                 <td>用户名</td>
@@ -57,9 +57,13 @@
                 <td>验证码</td>
                 <td style="border-right-style:none;">
                     <input type="text" name="checkCode" placeholder="请输入验证码" id="inputCode">
+
                 </td>
                 <td style="border-left-style:none;">
-                    <div class="code" id="checkCode"></div>
+                    <div class="code" id="checkCode">
+                    </div>
+                    <img src="http://localhost:8080/mook_course/kaptcha.jpg" id="changecode"/>
+
                 </td>
             </tr>
             <tr>
@@ -69,7 +73,34 @@
                 </td>
             </tr>
         </table>
-    </form>
+    </div>
 </center>
+
+<script type="text/javascript">
+    // alert(code);
+    $("#changecode").on("click",function(){
+        $(this).attr("src","http://localhost:8080/mook_course/kaptcha.jpg?d="+new Date().getTime());
+    });
+    $("input[type='submit']").click(function () {
+        var code = $("input[name='checkCode']").val();
+        var username = $("input[name='username']").val();
+        var password =$("input[name='password']").val();
+        $.ajax({
+            "url":"mook_course/login",
+            "data":{"code":code,"username":username,"password":password},
+            "type":"post",
+            "dataType":"json",
+            "success":function (data) {
+                console.log(data);
+                window.location.replace("http://localhost:8080/mook_course/pages/admin/server.jsp");
+            },
+            "error":function (err) {
+                alert("信息有误");
+                window.location.replace("http://localhost:8080/mook_course/");
+                console.log(err);
+            }
+        });
+    })
+</script>
 </body>
 </html>

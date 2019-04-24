@@ -1,5 +1,8 @@
 package com.course.servlet;
 
+import com.course.service.CourseService;
+import com.course.service.serviceimpl.CourseServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -15,8 +18,9 @@ import java.io.IOException;
 */
 @WebServlet("/exportcourse")
 public class ExportCourseServlet extends HttpServlet {
+    CourseService cs = new CourseServiceImpl();
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
+        cs.exportCourse(response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

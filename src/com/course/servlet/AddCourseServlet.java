@@ -1,7 +1,6 @@
 package com.course.servlet;
 
-import com.course.dao.daoimpl.CourseDaoImpl;
-import com.course.domian.Course;
+
 import com.course.service.CourseService;
 import com.course.service.serviceimpl.CourseServiceImpl;
 import com.course.utils.CourseUtil;

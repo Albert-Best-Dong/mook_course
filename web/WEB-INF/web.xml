@@ -13,6 +13,54 @@
         <servlet-name>SelectUserServlet</servlet-name>
         <servlet-class>com.course.servlet.SelectUserServlet</servlet-class>
     </servlet>
+
+    <servlet>
+        <servlet-name>Kaptcha</servlet-name>
+        <servlet-class>com.google.code.kaptcha.servlet.KaptchaServlet</servlet-class>
+        <init-param>
+            <param-name>kaptcha.border</param-name>
+            <param-value>no</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.image.width</param-name>
+            <param-value>100</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.image.height</param-name>
+            <param-value>30</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.font.size</param-name>
+            <param-value>28</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.char.string</param-name>
+            <param-value>qwertyuiopasdfghjklzxcvbnm123456789</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.textproducer.char.length</param-name>
+            <param-value>4</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.noise.impl</param-name>
+            <param-value>com.google.code.kaptcha.impl.DefaultNoise</param-value>
+        </init-param>
+        <init-param>
+            <param-name>kaptcha.obscurificator.impl</param-name>
+            <param-value>com.google.code.kaptcha.impl.ShadowGimpy</param-value>
+        </init-param>
+        <init-param>
+            <!--session.setAttribute("kcode",生成好的验证吗)-->
+            <param-name>kaptcha.session.key</param-name>
+            <param-value>kcode</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>Kaptcha</servlet-name>
+        <url-pattern>/kaptcha.jpg</url-pattern>
+    </servlet-mapping>
+
     <servlet-mapping>
         <servlet-name>AddUserServlet</servlet-name>
         <url-pattern>/adduser</url-pattern>
@@ -25,4 +73,5 @@
         <servlet-name>SelectUserServlet</servlet-name>
         <url-pattern>/deluser</url-pattern>
     </servlet-mapping>
+
 </web-app>

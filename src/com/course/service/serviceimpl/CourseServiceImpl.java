@@ -4,12 +4,13 @@ import com.course.dao.CourseDao;
 import com.course.dao.daoimpl.CourseDaoImpl;
 import com.course.domian.Course;
 import com.course.service.CourseService;
-import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.apache.poi.ss.usermodel.WorkbookFactory;
 
+import com.course.utils.ExcelHelper;
+
+import org.apache.poi.ss.usermodel.Workbook;
+
+
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
@@ -85,6 +86,17 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void exportCourse(HttpServletResponse response) {
+        //默认高版本excel
+        Workbook workbook = ExcelHelper.export(true);
 
+        response.setHeader("Content-Disposition","attachment;filename=export.xlsx" );
+        try {
+            ServletOutputStream servletOutputStream = response.getOutputStream();
+            workbook.write(servletOutputStream);
+            servletOutputStream.flush();
+            servletOutputStream.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

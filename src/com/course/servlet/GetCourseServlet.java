@@ -1,7 +1,7 @@
 package com.course.servlet;
 
 import com.course.dao.daoimpl.CourseDaoImpl;
-import com.course.domian.Course;
+
 import com.course.utils.PageUtil;
 
 import javax.servlet.ServletException;
